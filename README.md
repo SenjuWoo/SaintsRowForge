@@ -1,6 +1,39 @@
+<p align="center">
+  <img src="assets/mark.svg" width="72" height="72" alt="Saints Row Forge mark">
+</p>
+
+<div align="center">
+
 # Saints Row Forge
 
-[![tests](https://github.com/ShugokiFable/SaintsRowForge/actions/workflows/tests.yml/badge.svg)](https://github.com/ShugokiFable/SaintsRowForge/actions/workflows/tests.yml)
+**Receipted table mods for SRTT and SRIV. Game files stay read-only.**
+
+An AI-operable modding workbench for **Saints Row: The Third** (PC) and
+**Saints Row IV** (PC). Deterministic Python core, honest capability
+reporting, machine-readable receipts.
+
+<p>
+  <a href="https://github.com/ShugokiFable/SaintsRowForge/actions/workflows/tests.yml"><img src="https://github.com/ShugokiFable/SaintsRowForge/actions/workflows/tests.yml/badge.svg" alt="tests"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-c084fc?labelColor=140c1c" alt="MIT License"></a>
+  <a href="https://github.com/ShugokiFable/SaintsRowForge/releases/tag/v0.2.2"><img src="https://img.shields.io/badge/release-v0.2.2-e8c547?labelColor=140c1c" alt="v0.2.2"></a>
+  <img src="https://img.shields.io/badge/python-%3E%3D3.10-c4a0e8?labelColor=140c1c" alt="Python 3.10+">
+</p>
+
+<p>
+  <a href="#new-here-5-minutes">Quick start</a>
+  ·
+  <a href="#status-what-actually-works--all-verified-on-real-game-installs">Verified status</a>
+  ·
+  <a href="#mcp-server-no-dependencies">MCP</a>
+  ·
+  <a href="https://github.com/ShugokiFable/SaintsRowForge/releases">Releases</a>
+</p>
+
+</div>
+
+<p align="center">
+  <img src="assets/hero.svg" alt="Saints Row Forge verified on SRTT and SRIV" width="100%">
+</p>
 
 An AI-operable modding workbench for **Saints Row: The Third** (PC) and
 **Saints Row IV** (PC). Deterministic Python core, honest capability
@@ -156,3 +189,9 @@ python tests\run_tests.py          # 18 checks, no pytest needed, no game assets
 
 Real-install validation is separate: doctor + the E2E flow above were run
 against live Steam installs of both games.
+
+## License
+
+[MIT](LICENSE)
+
+Saints Row is a trademark of its owners. This project is unofficial.

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 420" role="img" aria-label="Saints Row Forge verified on SRTT and SRIV">
+  <defs>
+    <linearGradient id="srg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22142e"/>
+      <stop offset="1" stop-color="#140c1c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="420" rx="28" fill="url(#srg)"/>
+  <circle cx="1100" cy="80" r="160" fill="#c084fc" fill-opacity=".08"/>
+  <path fill="#e8c547" d="M96 56l8 19 20 1.2-15.6 13 5.2 19.4L96 97.2 78.4 108.6l5.2-19.4L68 76.2l20-1.2z"/>
+  <text x="140" y="92" fill="#f3e8ff" font-family="ui-sans-serif, system-ui, sans-serif" font-size="32" font-weight="700">Saints Row Forge</text>
+  <text x="140" y="128" fill="#c4a0e8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Receipted table mods for SRTT and SRIV. Game files stay read-only.</text>
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <rect x="72" y="176" width="546" height="172" rx="20" fill="#1d1228" stroke="#c084fc" stroke-opacity=".4"/>
+    <text x="100" y="216" fill="#e8c547" font-size="13" font-weight="700" letter-spacing="2">SAINTS ROW: THE THIRD</text>
+    <text x="100" y="252" fill="#f3e8ff" font-size="22" font-weight="600">VPP v06 · XTBL · ASM · strings</text>
+    <text x="100" y="286" fill="#c4a0e8" font-size="15">21k-file index · merge engine · Lua lint</text>
+    <text x="100" y="318" fill="#9d7cc0" font-size="14">Verified on a real Steam install</text>
+    <rect x="662" y="176" width="546" height="172" rx="20" fill="#1d1228" stroke="#e8c547" stroke-opacity=".45"/>
+    <text x="690" y="216" fill="#e8c547" font-size="13" font-weight="700" letter-spacing="2">SAINTS ROW IV</text>
+    <text x="690" y="252" fill="#f3e8ff" font-size="22" font-weight="600">VPP v0A · XTBL · ASM round-trip</text>
+    <text x="690" y="286" fill="#c4a0e8" font-size="15">23k-file index · byte-perfect vanilla ASM</text>
+    <text x="690" y="318" fill="#9d7cc0" font-size="14">Verified on a real Steam install</text>
+  </g>
+</svg>
