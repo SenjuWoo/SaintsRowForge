@@ -13,9 +13,9 @@ An AI-operable modding workbench for **Saints Row: The Third** (PC) and
 reporting, machine-readable receipts.
 
 <p>
-  <a href="https://github.com/ShugokiFable/SaintsRowForge/actions/workflows/tests.yml"><img src="https://github.com/ShugokiFable/SaintsRowForge/actions/workflows/tests.yml/badge.svg" alt="tests"></a>
+  <a href="https://github.com/SenjuWoo/SaintsRowForge/actions/workflows/tests.yml"><img src="https://github.com/SenjuWoo/SaintsRowForge/actions/workflows/tests.yml/badge.svg" alt="tests"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-c084fc?labelColor=140c1c" alt="MIT License"></a>
-  <a href="https://github.com/ShugokiFable/SaintsRowForge/releases/tag/v0.2.2"><img src="https://img.shields.io/badge/release-v0.2.2-e8c547?labelColor=140c1c" alt="v0.2.2"></a>
+  <a href="https://github.com/SenjuWoo/SaintsRowForge/releases/tag/v0.2.2"><img src="https://img.shields.io/badge/release-v0.2.2-e8c547?labelColor=140c1c" alt="v0.2.2"></a>
   <img src="https://img.shields.io/badge/python-%3E%3D3.10-c4a0e8?labelColor=140c1c" alt="Python 3.10+">
 </p>
 
@@ -26,7 +26,7 @@ reporting, machine-readable receipts.
   ·
   <a href="#mcp-server-no-dependencies">MCP</a>
   ·
-  <a href="https://github.com/ShugokiFable/SaintsRowForge/releases">Releases</a>
+  <a href="https://github.com/SenjuWoo/SaintsRowForge/releases">Releases</a>
 </p>
 
 </div>
@@ -45,7 +45,7 @@ MCP-capable agent (Hermes, Claude Desktop, Codex, ...) or directly via CLI.
 **You need:** Windows 10/11 · [Python](https://www.python.org/downloads/) 3.10+ ·
 Saints Row the Third and/or Saints Row IV (Steam PC).
 
-1. Grab the zip from [Releases](https://github.com/ShugokiFable/SaintsRowForge/releases), unzip anywhere
+1. Grab the zip from [Releases](https://github.com/SenjuWoo/SaintsRowForge/releases), unzip anywhere
 2. Right-click `Install.ps1` → **Run with PowerShell** (no admin needed) — it installs to `%LOCALAPPDATA%\SaintsRowForge` and checks itself
 3. Double-click `START-HERE.bat` any time you want status/help
 
