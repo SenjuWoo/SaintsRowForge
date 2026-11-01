@@ -15,7 +15,7 @@ reporting, machine-readable receipts.
 <p>
   <a href="https://github.com/SenjuWoo/SaintsRowForge/actions/workflows/tests.yml"><img src="https://github.com/SenjuWoo/SaintsRowForge/actions/workflows/tests.yml/badge.svg" alt="tests"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-c084fc?labelColor=140c1c" alt="MIT License"></a>
-  <a href="https://github.com/SenjuWoo/SaintsRowForge/releases/tag/v0.2.2"><img src="https://img.shields.io/badge/release-v0.2.2-e8c547?labelColor=140c1c" alt="v0.2.2"></a>
+  <a href="https://github.com/SenjuWoo/SaintsRowForge/releases/latest"><img src="https://img.shields.io/github/v/release/SenjuWoo/SaintsRowForge?label=release&color=e8c547" alt="latest release"></a>
   <img src="https://img.shields.io/badge/python-%3E%3D3.10-c4a0e8?labelColor=140c1c" alt="Python 3.10+">
 </p>
 
