@@ -10,3 +10,5 @@ jobs:
       - uses: actions/setup-python@v7
         with: { python-version: "3.12" }
       - run: python tests/run_tests.py
+      - name: Installer contract tests (staging, rollback, honest exit codes)
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File tests/Test-Installer.ps1
