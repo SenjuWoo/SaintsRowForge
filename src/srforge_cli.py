@@ -47,9 +47,30 @@ def _can_write(d):
         return False
 
 
+def _env_paths(game):
+    """Per-game override from SRFORGE_GAME_<KEY>, matching the MCP server.
+    Each game only ever sees its own variable, so setting SRFORGE_GAME_SRIV
+    cannot make SRTT look installed."""
+    v = os.environ.get(f"SRFORGE_GAME_{game.upper()}")
+    return [v] if v else []
+
+
+def _find(game):
+    return discovery.find_game(game, _env_paths(game))
+
+
+def _detect_all():
+    found = {}
+    for g in ("srtt", "sriv"):
+        det = _find(g)
+        if det:
+            found[g] = det
+    return found
+
+
 def _index_for(game):
     from srforge.core.index import GameIndex
-    det = discovery.find_game(game)
+    det = _find(game)
     if not det:
         raise ForgeError("SRF-GAME-002",
                          f"{game} installation not found",
@@ -63,12 +84,7 @@ def _emit(data):
 
 
 def cmd_discover(args):
-    extra = []
-    for g in ("srtt", "sriv"):
-        v = os.environ.get(f"SRFORGE_GAME_{g.upper()}")
-        if v:
-            extra.append(v)
-    found = discovery.detect_games(extra)
+    found = _detect_all()
     if args.json:
         _emit({"games": found})
     else:
@@ -82,9 +98,7 @@ def cmd_discover(args):
 
 def cmd_doctor(args):
     report = {"games": {}, "tools": deps_status(), "capabilities": capabilities.snapshot()}
-    extra = [os.environ.get(f"SRFORGE_GAME_{g.upper()}") for g in ("srtt", "sriv")]
-    extra = [e for e in extra if e]
-    found = discovery.detect_games(extra)
+    found = _detect_all()
     for g in ("srtt", "sriv"):
         entry = {"found": g in found}
         if g in found:

@@ -329,6 +329,61 @@ def t_malformed_job_rejected():
         assert e.code == "SRF-JOB-002", e.code
 
 
+def t_cli_env_override_per_game():
+    """SRFORGE_GAME_SRIV must reach every CLI command (not just discover) and
+    must not make SRTT look installed at the SRIV path."""
+    import contextlib
+    import io
+    import srforge_cli
+    root = tempfile.mkdtemp(prefix="srfcli_")
+    gdir = make_fixture_game(root)
+    saved = {k: os.environ.get(k) for k in
+             ("SRFORGE_GAME_SRIV", "SRFORGE_GAME_SRTT", "SRFORGE_HOME")}
+    os.environ["SRFORGE_GAME_SRIV"] = gdir
+    os.environ.pop("SRFORGE_GAME_SRTT", None)
+    os.environ["SRFORGE_HOME"] = os.path.join(root, "home")
+    srforge_cli.FORGE_ROOT = None
+
+    def run(argv):
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = srforge_cli.main(argv)
+        return rc, buf.getvalue()
+
+    norm = lambda p: os.path.normcase(os.path.normpath(p))
+    try:
+        rc, out = run(["discover", "--json"])
+        games = json.loads(out)["games"]
+        assert rc == 0 and norm(games["sriv"]["install_path"]) == norm(gdir), games
+        # a real Steam SRTT may exist on a dev box; it must never be the SRIV fixture
+        if "srtt" in games:
+            assert norm(games["srtt"]["install_path"]) != norm(gdir), games
+
+        rc, out = run(["xtbl", "query", "--file", "weapons.xtbl", "--record", "SMG",
+                       "--field", "Weapon/Damage", "--game", "sriv", "--json"])
+        assert rc == 0 and json.loads(out)["value"] == "33", (rc, out)  # patch vpp wins
+
+        rc, out = run(["mod", "new", "EnvMod", "--game", "sriv", "--json"])
+        ws = json.loads(out)["workspace"]
+        jobs = os.path.join(ws, "source", "jobs")
+        os.makedirs(jobs, exist_ok=True)
+        with open(os.path.join(jobs, "w.json"), "w", encoding="utf-8") as fh:
+            json.dump({"operations": [{"operation": "set", "file": "weapons.xtbl",
+                                       "record": "SMG", "field": "Weapon/Damage",
+                                       "value": 50}]}, fh)
+        rc, out = run(["mod", "build", "--workspace", ws, "--json"])
+        res = json.loads(out)
+        assert rc == 0 and res["changed_fields"] == 1, (rc, out)
+        assert os.path.isfile(os.path.join(ws, "release", "weapons.vpp_pc"))
+    finally:
+        for k, v in saved.items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+        srforge_cli.FORGE_ROOT = None
+
+
 if __name__ == "__main__":
     print("\n== Saints Row Forge test suite ==")
     check("vpp plain round-trip", t_vpp_roundtrip_plain)
@@ -349,6 +404,7 @@ if __name__ == "__main__":
     check("scope guard rejects collateral damage", t_scope_guard_fails_on_unexpected)
     check("merge union + conflict", t_merge_union_and_conflict)
     check("malformed job rejected cleanly", t_malformed_job_rejected)
+    check("CLI honours SRFORGE_GAME_<KEY> per game", t_cli_env_override_per_game)
 
     print(f"\n{len(PASS)} passed, {len(FAIL)} failed")
     sys.exit(1 if FAIL else 0)
